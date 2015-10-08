@@ -1,0 +1,53 @@
+<%= form_for(@exhibit) do |f| %>
+  <% if @exhibit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exhibit.errors.count, "error") %> prohibited this exhibit from being saved:</h2>
+
+      <ul>
+      <% @exhibit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :climate %><br>
+    <%= f.text_field :climate %>
+  </div>
+  <div class="field">
+    <%= f.label :year_opened %><br>
+    <%= f.number_field :year_opened %>
+  </div>
+
+  <h4>Animals</h4>
+  <%= f.fields_for :animals do |ff| %>
+    <div>
+      <div class="subfield">
+        <%= ff.label :name %><br>
+        <%= ff.text_field :name %>
+      </div>
+      <div class="subfield">
+        <%= ff.label :country %><br>
+        <%= ff.text_field :country %>
+      </div>
+      <div class="subfield">
+        <%= ff.label :number %><br>
+        <%= ff.number_field :number %>
+      </div>
+      <div class="subfield">
+        <%= ff.check_box :_destroy %>
+        <%= ff.label :_destroy %><br>
+      </div>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

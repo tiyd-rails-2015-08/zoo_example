@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @exhibit.name %>
+</p>
+
+<p>
+  <strong>Climate:</strong>
+  <%= @exhibit.climate %>
+</p>
+
+<p>
+  <strong>Year opened:</strong>
+  <%= @exhibit.year_opened %>
+</p>
+
+<h3>My Animals</h3>
+
+<% @exhibit.animals.each do |a| %>
+  <p><%= a.name %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_exhibit_path(@exhibit) %> |
+<%= link_to 'Back', exhibits_path %>
